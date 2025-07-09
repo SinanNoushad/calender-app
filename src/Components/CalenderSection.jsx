@@ -13,11 +13,13 @@ function CalenderSection({ currentDate, setCurrentDate, selectedDate, setSelecte
 
     const prevMonth = () => {
         setIsToday(false);
+        setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
     };
 
     const nextMonth = () => {
         setIsToday(false);
+        setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
     };
 
@@ -47,7 +49,7 @@ function CalenderSection({ currentDate, setCurrentDate, selectedDate, setSelecte
         calendarDays.push(
             <button
                 key={i}
-                className={`flex-1 text-center p-7 border-2  ${isSelected ? 'bg-blue-500' : ''}`}
+                className={`flex-1 text-center p-7 border-2 text-2xl font-bold ${isSelected ? 'bg-blue-500' : ''}`}
                 onClick={() =>{ 
                     setIsToday(false);
                     setSelectedDate(date)}
@@ -81,13 +83,13 @@ function CalenderSection({ currentDate, setCurrentDate, selectedDate, setSelecte
                             <img className="size-10" src="https://img.icons8.com/ios-filled/50/forward--v1.png"/>
                         </button>
                     </div>
-                    <button className={` ml-10 h-10 w-20 text-white ${isToday ? 'bg-amber-600' :  'bg-gray-600'} `} onClick={resetToToday}>Today</button>
+                    <button className={` ml-10 h-10 w-20 text-white rounded-[10px] ${isToday ? 'bg-amber-600' :  'bg-gray-600'} `} onClick={resetToToday}>Today</button>
                     <span className="ml-10 h-10 w-70 flex items-center justify-center text-[20px] font-bold">
                         {monthNames[month]} {year}
                     </span>
                     <div className="flex flex-row gap-2">
-                        <button className={`ml-10 w-20 h-10 text-white ${isMonthView ? 'bg-amber-600' : 'bg-gray-600'}`} onClick={() => setIsMonthView(true)}>Month</button>
-                        <button className={` w-20 h-10 text-white ${isMonthView ? 'bg-gray-600' : 'bg-amber-600'}`} onClick={() => setIsMonthView(false)}>Week</button>
+                        <button className={`ml-10 w-20 h-10 text-white rounded-[10px] ${isMonthView ? 'bg-amber-600' : 'bg-gray-600'}`} onClick={() => setIsMonthView(true)}>Month</button>
+                        <button className={` w-20 h-10 text-white rounded-[10px] ${isMonthView ? 'bg-gray-600' : 'bg-amber-600'}`} onClick={() => setIsMonthView(false)}>Week</button>
                     </div>
                 </div>
                 <div className="w-full h-full  mt-5">
